@@ -13,11 +13,11 @@ app.get("/", (req,res) => {
 const paisesRouter = require("./paises");
 app.use("/paises", paisesRouter);
 
-// const capitalRouter = require("./capital");
-// app.use("/capital", capitalRouter);
+const serieRouter = require("./serie");
+app.use("/serie", serieRouter);
 
-// const moedaRouter = require("./moeda");
-// app.use("/moeda", moedaRouter);
+const jogoRouter = require("./jogo");
+app.use("/jogo", jogoRouter);
 
 
 app.listen(port, () => {  
