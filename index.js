@@ -13,6 +13,12 @@ app.get("/", (req,res) => {
 const paisesRouter = require("./paises");
 app.use("/paises", paisesRouter);
 
+// const capitalRouter = require("./capital");
+// app.use("/capital", capitalRouter);
+
+// const moedaRouter = require("./moeda");
+// app.use("/moeda", moedaRouter);
+
 
 app.listen(port, () => {  
     console.info(`App rodando em: http://localhost:${port}`);

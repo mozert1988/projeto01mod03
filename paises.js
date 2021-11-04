@@ -4,6 +4,11 @@ const router = express.Router();
 
 let listaPaises = [];
 
+
+router.get("/", (req,res) => {
+    res.status(200).json({message: "Paises Ok"});
+});
+
 router.get("/listar", (req,res) => {
     res.status(200).json(listaPaises);
 });
@@ -11,32 +16,32 @@ router.get("/listar", (req,res) => {
 router.get("/listar/:nome", (req,res) => {
     const nome = req.params.nome;
     const paises = listaPaises.find((item) => item.nome === nome);
-    res.status(200).json(listaPaises);
+    res.status(200).json(paises);
 });
 
 router.get("/listarindex/:nome", (req,res) => {
     const nome = req.params.nome;
-    const index = listaPaises.findIndex((index) => item.nome === nome);
+    const index = listaPaises.findIndex((item) => item.nome === nome);
     if(index == -1){
         res.status(204);
         return;
     }
-    res.status(200).json(listaPaises[id]);
+    res.status(200).json({index:index});
 });
 
 
 router.post("/", (req,res) => {
     const paises = req.body;
+
     if(!paises.nome){
         res.status(400).json({message:"corpo da requisição vazio"});
         return;
+
     }if(!paises.capital){
         res.status(400).json({message:"corpo da requisição vazio"});
         return;
+
     }if(!paises.moeda){
-        res.status(400).json({message:"corpo da requisição vazio"});
-        return;
-    }if(!paises.idioma){
         res.status(400).json({message:"corpo da requisição vazio"});
         return;
     }
@@ -47,7 +52,7 @@ router.post("/", (req,res) => {
 
 router.put("/:id", (req,res) => {
     const id = req.params.id;
-    const pessoa = listaPaises[id];
+    const paises = listaPaises[id];
 
     console.log(paises);
 
